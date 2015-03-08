@@ -20,6 +20,35 @@ Or install it yourself as:
 
     $ gem install google_genomics
 
+## Standalone Client:
+
+### Configuration setup:
+
+  https://developers.google.com/bigquery/docs/authorization
+
+  Configure GoogleGenomics client:
+
+```ruby
+GoogleGenomics::Config.setup do |config|
+  config.pass_phrase = "notasecret"
+  config.key_file    = /location/to_your/key_file.p12
+  config.scope       = "https://www.googleapis.com/auth/genomics.readonly"
+  config.email       = "XXXXXX@developer.gserviceaccount.com"
+  config.retries     = 1
+end
+```
+
+retries indicates the number of times to retry on recoverable errors (no retries if set to one or not present)
+
+  And authorize client:
+
+```ruby
+@auth = GoogleGenomics::Auth.new
+@auth.authorize
+GoogleGenomics::Dataset.all
+```
+  Then you are ready to go!
+
 ## Usage
 
 TODO: Write usage instructions here

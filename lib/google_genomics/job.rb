@@ -1,2 +1,4 @@
-class Job
+module GoogleGenomics
+	class Job
+	end
 end
